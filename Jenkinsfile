@@ -4,7 +4,7 @@ pipeline {
         stage ('vcs') {
             steps {
                 git url: 'https://github.com/surajd16/game-of-life-java.git',
-                branch 'declarative'
+                branch: 'declarative'
             }
         }
         stage ('package') {
