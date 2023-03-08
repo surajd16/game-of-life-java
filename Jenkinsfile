@@ -3,13 +3,13 @@ pipeline {
     stages {
         stage ('vcs') {
             steps {
-                git url: 'https://github.com/surajd16/game-of-life-java.git'
+                git url: 'https://github.com/surajd16/game-of-life-java.git',
                 branch 'declarative'
             }
         }
         stage ('package') {
-            tools {
-                jdk 'JAVA8'
+            environment {
+                PATH= "/usr/lib/jvm/java-1.8.0-openjdk-amd64/bin:$PATH"
             }
             steps {
                 sh 'mvn package'
