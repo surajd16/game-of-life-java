@@ -1,10 +1,10 @@
 pipeline {
-    agent { label 'JAVA_8'}
+    agent { label 'MAVEN_JDK8' }
     stages {
         stage('vcs') {
             steps {
-                git url: 'https://github.com/surajd16/game-of-life-java.git',
-                branch: 'declarative'
+                git url: 'https://github.com/khajadevopsmarch23/game-of-life.git',
+                    branch: 'declarative'
             }
         }
         stage('package') {
@@ -15,9 +15,9 @@ pipeline {
         stage('post build') {
             steps {
                 archiveArtifacts artifacts: '**/target/gameoflife.war',
-                                onlyIfSuccessful: true
-                junit testResults: '**/surefire-reports/TEST-*.xml'                
+                                 onlyIfSuccessful: true
+                junit testResults: '**/surefire-reports/TEST-*.xml'
             }
-        } 
+        }
     }
 }
